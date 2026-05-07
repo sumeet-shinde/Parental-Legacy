@@ -14,7 +14,7 @@ function App() {
   // Mock API call (replace with your actual backend endpoint)
   const fetchParentalData = async (day) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/parental-legacy?day=${day}`); // Replace with your API URL
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_BASEURL}/api/parental-legacy?day=${day}`); // Replace with your API URL
       const data = await response.json();
       setMotherValues([data.GeneticInheritance[0], data.ConstitutionalVitality[0], data.MentalPatterns[0], data.IntellectualCapacity[0], data.EmotionalFoundation[0], data.SpiritualLineage[0], data.SoulConnections[0]]);
       setFatherValues([data.GeneticInheritance[1], data.ConstitutionalVitality[1], data.MentalPatterns[1], data.IntellectualCapacity[1], data.EmotionalFoundation[1], data.SpiritualLineage[1], data.SoulConnections[1]]);
@@ -23,6 +23,7 @@ function App() {
       setMaxValues([data.GeneticInheritance[4], data.ConstitutionalVitality[4], data.MentalPatterns[4], data.IntellectualCapacity[4], data.EmotionalFoundation[4], data.SpiritualLineage[4], data.SoulConnections[4]]);
       setOverallTotal([data.OverallTotal[0], data.OverallTotal[1], data.OverallTotal[2]]);
     } catch (error) {
+      console.log(error);
       alert('Error fetching data:', error);
     }
   };

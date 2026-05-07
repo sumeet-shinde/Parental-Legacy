@@ -1,14 +1,16 @@
 const express = require('express');
 const app = express();
-const port = 3001; // Or any available port
 const fs = require('fs');
 const cors = require('cors');
 const { generateData } = require('./legacy_logic');
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 app.use(express.json()); // Middleware to parse JSON request bodies (not strictly needed here, but good practice)
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   })
 );
@@ -33,6 +35,7 @@ app.get('/api/parental-legacy', async (req, res) => {
   res.json(result);
 });
 
+const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
