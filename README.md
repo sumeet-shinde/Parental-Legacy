@@ -9,3 +9,6 @@ A mern stack project of random values.
 5. Locate to 'backend' folder in terminal and run 'npm start'.
 6. You will see home page with table.
 
+# Live Project Link
+https://parental-legacy-1.onrender.com/
+
